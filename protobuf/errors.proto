@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package marketplace.errors;
+option go_package = "protobuf";
+option (gogoproto.messagename_all) = true;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message ErrorResponse {
+    Error error = 1;
+}
+
+message Error {
+    message Detail {
+        string key = 1;
+        string value = 2;
+    }
+    string code = 1;
+    string message = 2;
+    repeated Detail details = 3;
+}
